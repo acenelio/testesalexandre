@@ -12,20 +12,38 @@ namespace xadrez_console
             Posicao P = new Posicao(3, 4);
             Tabuleiro tab = new Tabuleiro(8,8);
 
-            //colocando peças
-            tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0,0));
-            tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 7));
-            tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 4));
+            try
+            {
+                //colocando peças
+                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
+                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 7));
+                tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 4));
 
+                Console.Write("\tDigite uma posição para a linha: ");
+                int linha = int.Parse(Console.ReadLine());
+                Console.Write("\tDigite uma posição para a Coluna: ");
+                int coluna = int.Parse(Console.ReadLine());
+                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(linha, coluna));
 
-            //funções
-            Console.WriteLine();
-            Tela.ImprimirTabuleiro(tab);
+                //funções
+                Console.WriteLine();
+                Tela.ImprimirTabuleiro(tab);
 
-            //testes
-            Console.WriteLine();
-            Console.Write("\tPosição: " + P);
-            Console.ReadLine();
+                //testes
+                Console.WriteLine();
+                Console.Write("\tPosição: " + P);
+                Console.ReadLine();
+            }
+            catch(TabuleiroException e)
+            {
+                Console.WriteLine("\tErro inesperado: " + e.Message);
+                Console.ReadLine();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("\tErro inesperado: " + e.Message);
+                Console.ReadLine();
+            }
         }
     }
 }
