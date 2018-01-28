@@ -7,17 +7,15 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
+            //variaveis e clsses
             Posicao P = new Posicao(3, 4);
             Tabuleiro tab = new Tabuleiro(8,8);
-            for(int i = 0; i < tab.colunas; i++)
-            {
-                Console.WriteLine();
-                for (int j = 0; j < tab.linhas; j++)
-                {
-                    Console.Write("\t*");
-                }
-                Console.WriteLine();
-            }
+
+            //funções
+            Console.WriteLine();
+            Tela.ImprimirTabuleiro(tab);
+
+            //testes
             Console.WriteLine();
             Console.WriteLine("\tPosição: " + P);
             Console.ReadLine();
