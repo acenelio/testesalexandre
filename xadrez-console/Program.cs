@@ -31,7 +31,11 @@ namespace xadrez_console
 
                 //testes
                 Console.WriteLine();
-                Console.Write("\tPosição: " + P);
+                Console.WriteLine("\tPosição: " + P);
+                PosicaoXadrez pos = new PosicaoXadrez('a', 1);
+                Console.WriteLine("\tPosição: " + pos);
+                Console.Write("\tPosição: " + pos.toPosicao());
+
                 Console.ReadLine();
             }
             catch(TabuleiroException e)
