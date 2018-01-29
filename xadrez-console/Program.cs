@@ -9,13 +9,16 @@ namespace xadrez_console
         static void Main(string[] args)
         {
             //variaveis e clsses
+            //ConsoleColor color = Console.BackgroundColor;
+            //color = ConsoleColor.Green;
+
             Posicao P = new Posicao(3, 4);
             Tabuleiro tab = new Tabuleiro(8,8);
 
             try
             {
                 //colocando peças
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
+                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(0, 0));
                 tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 7));
                 tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 4));
 
