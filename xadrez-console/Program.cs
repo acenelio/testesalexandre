@@ -8,37 +8,35 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-            //variaveis e clsses
-            //ConsoleColor color = Console.BackgroundColor;
-            //color = ConsoleColor.Green;
-
             Posicao P = new Posicao(3, 4);
             Tabuleiro tab = new Tabuleiro(8,8);
 
             try
             {
-                //colocando peças
-                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(0, 0));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 7));
-                tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 4));
+                PartidaXadrez partida = new PartidaXadrez();
 
-                Console.Write("\tDigite uma posição para a linha: ");
-                int linha = int.Parse(Console.ReadLine());
-                Console.Write("\tDigite uma posição para a Coluna: ");
-                int coluna = int.Parse(Console.ReadLine());
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(linha, coluna));
+                //loop principal do jogo
+                while (!partida.terminada)
+                {
+                    Console.Clear();
 
-                //funções
-                Console.WriteLine();
-                Tela.ImprimirTabuleiro(tab);
+                    //titulo
+                    Tela.Titulo();
+                    
+                    //imprimindo tabuleiro
+                    Tela.ImprimirTabuleiro(partida.tab);
+                    Console.WriteLine();
+                    //entradas do jogador, movimenta a peça
+                    Console.Write("\tDigite a origem: ");
+                    Posicao origem = Tela.LerPosicaoXadrez().toPosicao();
+                    Console.Write("\tDigite o destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrez().toPosicao();
+                    partida.ExecutaMovimentos(origem, destino);
 
-                //testes
-                Console.WriteLine();
-                Console.WriteLine("\tPosição: " + P);
-                PosicaoXadrez pos = new PosicaoXadrez('a', 1);
-                Console.WriteLine("\tPosição: " + pos);
-                Console.Write("\tPosição: " + pos.toPosicao());
 
+                    //Console.Write("\t");
+                    //Console.ReadLine();
+                }
                 Console.ReadLine();
             }
             catch(TabuleiroException e)
