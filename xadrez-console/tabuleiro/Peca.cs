@@ -1,6 +1,6 @@
 ﻿namespace tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         //atributos
         public Posicao posicao { get; set; }
@@ -22,5 +22,7 @@
         {
             qtemovimentos++;
         }
+
+        public abstract bool[,] Movimentospossiveis();
     }
 }
