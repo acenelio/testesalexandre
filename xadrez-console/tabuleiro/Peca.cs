@@ -23,6 +23,26 @@
             qtemovimentos++;
         }
 
+        // testando movimentos posssiveis numa matriz
+        public bool ExisteMovimentosPossiveis()
+        {
+            bool [,] mat = Movimentospossiveis();
+            for (int i = 0; i < tab.linhas; i++)
+            {
+                for (int j = 0; j < tab.colunas; j++)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool PodeMoverPara(Posicao pos)
+        {
+            return Movimentospossiveis()[pos.linha, pos.coluna];
+        }
+
+
         public abstract bool[,] Movimentospossiveis();
     }
 }

@@ -6,8 +6,8 @@ namespace xadrez
     {
         //atributos
         public Tabuleiro tab { get; private set; }
-        private int turno;
-        private Cor jogadorAtual;
+        public int turno { get; private set; }
+        public Cor jogadorAtual { get; private set; }
         public bool terminada { get; private set; }
 
         //construtor
@@ -29,6 +29,50 @@ namespace xadrez
             tab.ColocarPeca(p, destino);   
         }
 
+        public void RealizaJogadas(Posicao origem, Posicao destino)
+        {
+            ExecutaMovimentos(origem, destino);
+            turno++;
+            MudaJogador();
+
+        }
+
+        public void ValidarPosicaoOrigem(Posicao pos)
+        {
+            if (tab.peca(pos) == null)
+            {
+                throw new TabuleiroException("\tNão existe peça na posição escolhida!");
+            }
+            if (jogadorAtual != tab.peca(pos).cor )
+            {
+                throw new TabuleiroException ("\tA peça na posição escolhida não é sua!");
+            }
+            if (!tab.peca(pos).ExisteMovimentosPossiveis ())
+            {
+                throw new TabuleiroException("\tNão há movimentos possiveis na peça de origem escolhida!");
+            }
+        }
+
+        public void ValidarPosicaoDestino(Posicao origem, Posicao destino)
+        {
+            if(!tab.peca(origem).PodeMoverPara(destino))
+            {
+                throw new TabuleiroException("\tPosição de destino inválida!");
+            }
+        }
+
+
+        private void MudaJogador()
+        {
+            if(jogadorAtual == Cor.Branca)
+            {
+                jogadorAtual = Cor.Preta;
+            }
+            else
+            {
+                jogadorAtual = Cor.Branca;
+            }
+        }
 
         private void ColocarPecas()
         {

@@ -10,55 +10,62 @@ namespace xadrez_console
         {
             Posicao P = new Posicao(3, 4);
             Tabuleiro tab = new Tabuleiro(8,8);
-
-            try
-            {
-                PartidaXadrez partida = new PartidaXadrez();
-
-                //loop principal do jogo
-                while (!partida.terminada)
-                {
+            PartidaXadrez partida = new PartidaXadrez();
+            
+			//loop principal do jogo
+			while (!partida.terminada)
+			{
+                try
+				{
                     Console.Clear();
 
                     //titulo
                     Tela.Titulo();
-                    
+
                     //imprimindo tabuleiro
                     Tela.ImprimirTabuleiro(partida.tab);
                     Console.WriteLine();
-                    
-                    //entradas do jogador, movimenta a peça a partir da origem
-                    Console.Write("\tDigite a origem: ");
-                    Posicao origem = Tela.LerPosicaoXadrez().toPosicao();
+                    Console.WriteLine("\tTurno: " + partida.turno);
+                    Console.WriteLine("\tAguardando Jogada das peças " + partida.jogadorAtual + "!");
 
-                    bool[,] PosicoesPossiveis = partida.tab.peca(origem).Movimentospossiveis();
+					//entradas do jogador, movimenta a peça a partir da origem
+					Console.Write("\tDigite a origem: ");
+					Posicao origem = Tela.LerPosicaoXadrez().toPosicao();
+					partida.ValidarPosicaoOrigem(origem);
 
-                    Console.Clear();
-                    Tela.Titulo();
-                    Tela.ImprimirTabuleiro(partida.tab,PosicoesPossiveis);
-                    Console.WriteLine();
+					bool[,] PosicoesPossiveis = partida.tab.peca(origem).Movimentospossiveis();
 
-                    //entradas do jogador, movimenta a peça para o destino
-                    Console.Write("\tDigite o destino: ");
-                    Posicao destino = Tela.LerPosicaoXadrez().toPosicao();
-                    partida.ExecutaMovimentos(origem, destino);
+					Console.Clear();
+					Tela.Titulo();
+					Tela.ImprimirTabuleiro(partida.tab, PosicoesPossiveis);
+					Console.WriteLine();
 
+					//entradas do jogador, movimenta a peça para o destino
+					Console.Write("\tDigite o destino: ");
+					Posicao destino = Tela.LerPosicaoXadrez().toPosicao();
+					partida.ValidarPosicaoDestino(origem, destino);
+						
+					// se tudo acima estiver dentro das regras executa a função abaixo
+					partida.RealizaJogadas(origem, destino);
+				}
 
-                    //Console.Write("\t");
-                    //Console.ReadLine();
-                }
-                Console.ReadLine();
-            }
-            catch(TabuleiroException e)
-            {
-                Console.WriteLine("\tErro inesperado: " + e.Message);
-                Console.ReadLine();
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine("\tErro inesperado: " + e.Message);
-                Console.ReadLine();
-            }
+                catch (TabuleiroException e)
+				{
+                    Console.WriteLine(e.Message);
+					Console.Write("\tTecle enter para continuar... ");
+					Console.ReadLine();
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine("\tErro inesperado: " + e.Message);
+					Console.ReadLine();
+				}
+
+				//Console.Write("\t");
+				//Console.ReadLine();
+			}
+            
+            
         }
     }
 }
