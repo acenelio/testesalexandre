@@ -23,10 +23,7 @@ namespace xadrez_console
                     Tela.Titulo();
 
                     //imprimindo tabuleiro
-                    Tela.ImprimirTabuleiro(partida.tab);
-                    Console.WriteLine();
-                    Console.WriteLine("\tTurno: " + partida.turno);
-                    Console.WriteLine("\tAguardando Jogada das peças " + partida.jogadorAtual + "!");
+                    Tela.ImprimirPartida(partida);
 
 					//entradas do jogador, movimenta a peça a partir da origem
 					Console.Write("\tDigite a origem: ");
