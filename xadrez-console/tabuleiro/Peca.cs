@@ -23,6 +23,12 @@
             qtemovimentos++;
         }
 
+        //decrementar movimentos
+        public void DecrementarQteMovimentos()
+        {
+            qtemovimentos--;
+        }
+
         // testando movimentos posssiveis numa matriz
         public bool ExisteMovimentosPossiveis()
         {

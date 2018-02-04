@@ -22,13 +22,20 @@ namespace xadrez_console
         public static void ImprimirPartida(PartidaXadrez partida)
         {
             //imprimindo tabuleiro
+            ConsoleColor aux = Console.ForegroundColor;
             ImprimirTabuleiro(partida.tab);
             Console.WriteLine();
             ImprimirPecasCapturadas(partida);
             Console.WriteLine();
             Console.WriteLine("\tTurno: " + partida.turno);
             Console.WriteLine("\tAguardando Jogada das peças " + partida.jogadorAtual + "!");
-
+            
+            if (partida.xeque)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\tVocê esta em xeque!");
+                Console.ForegroundColor = aux;
+            }
         }
 
         public static void ImprimirPecasCapturadas(PartidaXadrez partida)
