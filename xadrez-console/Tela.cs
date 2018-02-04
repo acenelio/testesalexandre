@@ -28,14 +28,25 @@ namespace xadrez_console
             ImprimirPecasCapturadas(partida);
             Console.WriteLine();
             Console.WriteLine("\tTurno: " + partida.turno);
-            Console.WriteLine("\tAguardando Jogada das peças " + partida.jogadorAtual + "!");
-            
-            if (partida.xeque)
+            if (!partida.terminada)
+            {
+                Console.WriteLine("\tAguardando Jogada das peças " + partida.jogadorAtual + "!");
+                if (partida.xeque)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\tVocê esta em xeque!");
+                    Console.ForegroundColor = aux;
+                }
+            }
+            else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\tVocê esta em xeque!");
+                Console.WriteLine("\tXEQUEMATE!!! ");
+                Console.WriteLine("\tVENCEDOR: " + partida.jogadorAtual);
                 Console.ForegroundColor = aux;
             }
+            
+            
         }
 
         public static void ImprimirPecasCapturadas(PartidaXadrez partida)

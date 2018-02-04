@@ -58,11 +58,15 @@ namespace xadrez_console
 					Console.ReadLine();
 				}
 
-				//Console.Write("\t");
-				//Console.ReadLine();
+                //Console.Write("\tTecle enter para encerrar o jogo...");
+                //Console.ReadLine();
 			}
-            
-            
+            Console.Clear();
+            Tela.Titulo();
+            Tela.ImprimirPartida(partida);
+            Console.Write("\tTecle enter para encerrar o jogo...");
+            Console.ReadLine();
+
         }
     }
 }

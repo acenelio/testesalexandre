@@ -52,7 +52,8 @@ namespace xadrez
                 DefazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("\tVocê não pode ser colocar em cheque!");
             }
-            if(EstarEmXeque(Adversaria (jogadorAtual)))
+
+            if (EstarEmXeque(Adversaria (jogadorAtual)))
             {
                 xeque = true;
             }
@@ -62,8 +63,19 @@ namespace xadrez
             }
             Console.ForegroundColor = aux;
 
-            turno++;
-            MudaJogador();
+            if (TesteXequeMate(Adversaria(jogadorAtual)))
+            {
+                terminada = true;    
+            }
+            else
+            {
+                turno++;
+                MudaJogador();
+
+            }
+            
+            //turno++;
+            //MudaJogador();
         }
 
 
@@ -193,6 +205,42 @@ namespace xadrez
             }
             return false;
         }
+        //verifica se o rei esta em xeque mate
+        public bool TesteXequeMate(Cor cor)
+        {
+            if (!EstarEmXeque(cor))
+            {
+                return false;
+            }
+            foreach(Peca x in PecasEmJogo(cor))
+            {
+                bool[,] mat = x.Movimentospossiveis();
+                for (int i = 0; i< tab.linhas; i++)
+                {
+                    for (int j = 0; j < tab.colunas; j++)
+                    {
+                        if (mat[i,j])
+                        {
+                            Posicao origem = x.posicao;
+                            Posicao destino = new Posicao(i,j);
+                            Peca pecaCapturada = ExecutaMovimentos(origem, destino);
+                            bool testeXeque = EstarEmXeque(cor);
+                            DefazMovimento(origem, destino, pecaCapturada);
+                            if(!testeXeque)
+                            {
+                                return false;
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+            return true;
+        }
+        
+
 
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
         {
@@ -203,10 +251,11 @@ namespace xadrez
 
         private void ColocarPecas()
         {
+            ColocarNovaPeca('b', 1, new Torre(tab, Cor.Branca));
             ColocarNovaPeca('a', 1, new Torre(tab, Cor.Branca));
             ColocarNovaPeca('h', 1, new Torre(tab, Cor.Branca));
             ColocarNovaPeca('e', 1, new Rei(tab, Cor.Branca));
-
+            ColocarNovaPeca('f', 3, new Torre(tab, Cor.Branca));
             ColocarNovaPeca('a', 8, new Torre(tab, Cor.Preta));
             ColocarNovaPeca('h', 8, new Torre(tab, Cor.Preta));
             ColocarNovaPeca('e', 8, new Rei(tab, Cor.Preta));
