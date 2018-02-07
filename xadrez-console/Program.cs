@@ -57,9 +57,6 @@ namespace xadrez_console
 					Console.WriteLine("\tErro inesperado: " + e.Message);
 					Console.ReadLine();
 				}
-
-                //Console.Write("\tTecle enter para encerrar o jogo...");
-                //Console.ReadLine();
 			}
             Console.Clear();
             Tela.Titulo();

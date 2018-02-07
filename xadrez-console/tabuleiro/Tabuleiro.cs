@@ -21,11 +21,12 @@ namespace tabuleiro
             pecas = new Peca[linhas, colunas];
         }
 
-        //metodo para aceesar a matriz  peca, o atributo é private
+        //metodo para acessar a matriz  peca, o atributo é private
         public Peca peca(int linha, int coluna)
         {
             return pecas[linha, coluna];
         }
+
         public Peca peca(Posicao pos)
         {
             return pecas[pos.linha, pos.coluna];
