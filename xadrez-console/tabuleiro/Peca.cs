@@ -37,7 +37,9 @@
             {
                 for (int j = 0; j < tab.colunas; j++)
                 {
-                    return true;
+                    if (mat[i, j]) {
+                        return true;
+                    }
                 }
             }
             return false;
