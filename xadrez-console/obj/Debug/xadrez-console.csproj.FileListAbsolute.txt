@@ -5,3 +5,10 @@ C:\Users\Alexandre\Desktop\Nelio C#\xadrez-console\xadrez-console\obj\Debug\xadr
 C:\Users\Alexandre\Desktop\Nelio C#\xadrez-console\xadrez-console\obj\Debug\xadrez-console.csproj.CoreCompileInputs.cache
 C:\Users\Alexandre\Desktop\Nelio C#\xadrez-console\xadrez-console\obj\Debug\xadrez-console.exe
 C:\Users\Alexandre\Desktop\Nelio C#\xadrez-console\xadrez-console\obj\Debug\xadrez-console.pdb
+C:\temp\Xadrez-Console\xadrez-console\bin\Debug\xadrez-console.exe.config
+C:\temp\Xadrez-Console\xadrez-console\bin\Debug\xadrez-console.exe
+C:\temp\Xadrez-Console\xadrez-console\bin\Debug\xadrez-console.pdb
+C:\temp\Xadrez-Console\xadrez-console\obj\Debug\xadrez-console.csprojResolveAssemblyReference.cache
+C:\temp\Xadrez-Console\xadrez-console\obj\Debug\xadrez-console.csproj.CoreCompileInputs.cache
+C:\temp\Xadrez-Console\xadrez-console\obj\Debug\xadrez-console.exe
+C:\temp\Xadrez-Console\xadrez-console\obj\Debug\xadrez-console.pdb
